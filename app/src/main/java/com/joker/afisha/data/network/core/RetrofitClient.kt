@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private const val BASE_URL = ""
+    private const val BASE_URL = "https://shift-backend.onrender.com/"
 
     // Ленивая инициализация Retrofit
     val instance: RetrofitServices by lazy {
@@ -17,7 +17,7 @@ object RetrofitClient {
 
     private fun createRetrofit(): RetrofitServices {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.HEADERS // Уровень логирования
+            level = HttpLoggingInterceptor.Level.BODY // Уровень логирования
         }
 
         val okHttpClient = OkHttpClient.Builder()

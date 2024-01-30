@@ -1,8 +1,9 @@
 package com.joker.afisha.domain.repository
 
-import com.joker.afisha.domain.entities.Film
+
+import com.joker.afisha.data.network.entities.Film
 import kotlinx.coroutines.flow.Flow
 
 interface Repo {
-    fun getAllFilms(): Flow<Film>
+    suspend fun getAllFilms(): Result<List<Film>?>
 }

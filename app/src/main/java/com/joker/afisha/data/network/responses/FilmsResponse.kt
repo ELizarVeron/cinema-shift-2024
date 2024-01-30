@@ -1,4 +1,4 @@
-package com.joker.afisha.data.core.network.entities.responses
+package com.joker.afisha.data.network.responses
 
 import com.joker.afisha.data.network.entities.Film
 
