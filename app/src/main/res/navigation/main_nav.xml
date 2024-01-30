@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/afisha">
+
+    <fragment
+        android:id="@+id/afisha"
+        android:name="com.joker.afisha.presentation.AfishaFragment"
+        android:label="fragment_afisha"
+        tools:layout="@layout/fragment_afisha" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.joker.afisha.presentation.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/tickets"
+        android:name="com.joker.afisha.presentation.TicketsFragment"
+        android:label="fragment_tickets"
+        tools:layout="@layout/fragment_tickets" />
+</navigation>
