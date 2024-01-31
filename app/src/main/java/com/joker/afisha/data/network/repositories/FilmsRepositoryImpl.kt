@@ -3,9 +3,9 @@ package com.joker.afisha.data.network.repositories
 import com.joker.afisha.data.network.core.RetrofitClient
 import com.joker.afisha.data.network.core.RetrofitServices
 import com.joker.afisha.data.network.entities.Film
-import com.joker.afisha.domain.repository.Repo
+import com.joker.afisha.domain.repository.FilmsRepository
 
-class RepositoryImpl: Repo {
+class FilmsRepositoryImpl: FilmsRepository {
     private val rService: RetrofitServices = RetrofitClient.instance
      override suspend fun getAllFilms(): Result<List<Film>?> =
          try {
