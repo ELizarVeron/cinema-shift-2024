@@ -9,23 +9,21 @@ import com.joker.afisha.data.network.entities.Film
 import com.joker.afisha.domain.repository.Repo
 import kotlinx.coroutines.launch
 
-class AfishaViewModel(private var repo: Repo) : ViewModel() {
+class FilmViewModel(private var repo: Repo) : ViewModel() {
 
-    private var _films: MutableLiveData<List<Film>> = MutableLiveData<List<Film>>()
-    var films: LiveData<List<Film>> = _films as LiveData<List<Film>>
-    init {
-        getAllFilms()
-    }
-    private fun getAllFilms() {
-        Log.d("OLOLO","getAllFilms")
+    private var _film: MutableLiveData<Film> = MutableLiveData<Film>()
+    var film: LiveData<Film> = _film as LiveData<Film>
+
+    fun getFilm(id: String) {
+
         viewModelScope.launch {
-           val res = repo.getAllFilms()
+            val res = repo.getFilm(id)
             res.onSuccess {
-                _films.postValue(it)
-                Log.d("OLOLO","postValue")
+                _film.postValue(it)
+                Log.d("OLOLO", "postValue")
             }
             res.onFailure {
-                Log.d("OLOLO",it.message.toString())
+                Log.d("OLOLO", it.message.toString())
             }
         }
         //  return allEvents

@@ -5,56 +5,63 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.joker.afisha.R
+import com.joker.afisha.data.network.core.RetrofitClient
+import com.joker.afisha.data.network.entities.Film
+import com.joker.afisha.databinding.FragmentFilmBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.properties.Delegates
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FilmFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FilmFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    private var binding: FragmentFilmBinding by Delegates.notNull()
+    private val viewModel by viewModel<FilmViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_film, container, false)
+    ): View {
+        binding = FragmentFilmBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FilmFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FilmFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val id = arguments?.getString("id")
+
+        binding.imBack.setOnClickListener {
+            requireView().findNavController()
+                .popBackStack()
+        }
+
+        id?.let {
+            viewModel.getFilm(it)
+        }
+
+        viewModel.film.observe(viewLifecycleOwner) {
+            init(it)
+        }
+
     }
+
+    private fun init(film: Film) {
+        binding.title.text = film.name
+        binding.subTitle.text = film.originalName
+        binding.about.text = film.description
+
+        Glide.with(requireContext())
+            .load(RetrofitClient.BASE_URL + film.img)
+            .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
+            .into(binding.imFilm)
+
+    }
+
 }

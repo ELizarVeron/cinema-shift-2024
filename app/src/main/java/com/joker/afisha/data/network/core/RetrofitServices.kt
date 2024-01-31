@@ -2,15 +2,10 @@ package com.joker.afisha.data.network.core
 
 
 import com.joker.afisha.data.core.network.requests.CancelOrderRequest
-import com.joker.afisha.data.core.network.entities.responses.CancelOrderResponse
 import com.joker.afisha.data.core.network.requests.CreateOtpRequest
-import com.joker.afisha.data.core.network.entities.responses.CreateOtpResponse
-import com.joker.afisha.data.core.network.entities.responses.FilmDetailsResponse
-import com.joker.afisha.data.core.network.entities.responses.FilmScheduleResponse
-import com.joker.afisha.data.core.network.entities.responses.FilmsResponse
-import com.joker.afisha.data.core.network.entities.responses.OrdersResponse
+import com.joker.afisha.data.network.responses.FilmDetailsResponse
+import com.joker.afisha.data.network.responses.FilmsResponse
 import com.joker.afisha.data.core.network.requests.PaymentRequest
-import com.joker.afisha.data.core.network.entities.responses.PaymentResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -19,15 +14,15 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
-private const val BASE_URL = ""
+
 
 interface RetrofitServices {
 
     @GET("/cinema/today")
-    suspend fun getFilms(): Response<com.joker.afisha.data.core.network.entities.responses.FilmsResponse>
+    suspend fun getFilms(): Response<FilmsResponse>
 
     @GET("/cinema/film/{filmId}")
-    suspend fun getFilmDetails(@Path("filmId") filmId: String): Response<com.joker.afisha.data.core.network.entities.responses.FilmDetailsResponse>
+    suspend fun getFilmDetails(@Path("filmId") filmId: String): Response<FilmDetailsResponse>
 
 
     @PUT("/cinema/orders/cancel")
