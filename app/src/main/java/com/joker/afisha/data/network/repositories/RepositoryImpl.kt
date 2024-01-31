@@ -25,4 +25,23 @@ class RepositoryImpl: Repo {
              Result.failure(e)
          }
 
+    override suspend fun getFilm(id:String): Result<Film?> =
+        try {
+            val response = rService.getFilmDetails(id)
+            if(response.isSuccessful){
+                if(response.body()?.success==true){
+                    Result.success(response.body()?.film)
+                } else{
+                    Result.failure(Exception(response.body()?.reason?:"unknown error"))
+                }
+
+            } else{
+                Result.failure(Exception(response.message()))
+            }
+
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+
+
 }

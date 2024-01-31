@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://shift-backend.onrender.com/"
+      const val BASE_URL = "https://shift-backend.onrender.com"
 
     // Ленивая инициализация Retrofit
     val instance: RetrofitServices by lazy {

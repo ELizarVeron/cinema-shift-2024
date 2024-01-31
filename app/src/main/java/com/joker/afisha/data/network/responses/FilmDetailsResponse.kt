@@ -1,9 +1,10 @@
-package com.joker.afisha.data.core.network.entities.responses
+package com.joker.afisha.data.network.responses
 
+import com.joker.afisha.data.network.entities.Film
 import com.joker.afisha.data.network.entities.Schedule
 
 data class FilmDetailsResponse(
     val success: Boolean,
     val reason: String,
-    val schedules: List<Schedule>
+    val film: Film
 )

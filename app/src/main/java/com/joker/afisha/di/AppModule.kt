@@ -1,17 +1,12 @@
 package com.joker.afisha.di
 
 
-import com.joker.afisha.data.network.core.RetrofitServices
 import com.joker.afisha.data.network.repositories.RepositoryImpl
 import com.joker.afisha.domain.repository.Repo
 import com.joker.afisha.presentation.AfishaViewModel
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
+import com.joker.afisha.presentation.FilmViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 private const val TIMEOUT: Long = 30
 private const val BASE_URL = "https://shift-backend.onrender.com/"
@@ -45,7 +40,9 @@ val AppModule = module {
     viewModel {
         AfishaViewModel(repo = get())
     }
-
+    viewModel {
+        FilmViewModel(repo = get())
+    }
     single<Repo> {
         RepositoryImpl()
     }

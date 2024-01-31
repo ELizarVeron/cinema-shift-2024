@@ -3,7 +3,7 @@ package com.joker.afisha.data.network.core
 
 import com.joker.afisha.data.core.network.requests.CancelOrderRequest
 import com.joker.afisha.data.core.network.requests.CreateOtpRequest
-import com.joker.afisha.data.core.network.entities.responses.FilmDetailsResponse
+import com.joker.afisha.data.network.responses.FilmDetailsResponse
 import com.joker.afisha.data.network.responses.FilmsResponse
 import com.joker.afisha.data.core.network.requests.PaymentRequest
 import retrofit2.Response

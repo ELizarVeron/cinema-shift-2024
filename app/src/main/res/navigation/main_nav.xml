@@ -9,7 +9,11 @@
         android:id="@+id/afisha"
         android:name="com.joker.afisha.presentation.AfishaFragment"
         android:label="fragment_afisha"
-        tools:layout="@layout/fragment_afisha" />
+        tools:layout="@layout/fragment_afisha" >
+        <action
+            android:id="@+id/action_afisha_to_filmFragment"
+            app:destination="@id/filmFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profile"
         android:name="com.joker.afisha.presentation.ProfileFragment"
@@ -20,4 +24,13 @@
         android:name="com.joker.afisha.presentation.TicketsFragment"
         android:label="fragment_tickets"
         tools:layout="@layout/fragment_tickets" />
+    <fragment
+        android:id="@+id/filmFragment"
+        android:name="com.joker.afisha.presentation.FilmFragment"
+        android:label="fragment_film"
+        tools:layout="@layout/fragment_film" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>
