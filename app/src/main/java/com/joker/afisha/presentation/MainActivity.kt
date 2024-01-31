@@ -8,12 +8,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.joker.afisha.R
 
 class MainActivity : AppCompatActivity() {
-    lateinit var navController: NavController
+    val navController: NavController by lazy {
+        Navigation.findNavController(this, R.id.main_nav_host_fragment)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navController = Navigation.findNavController(this, R.id.main_nav_host_fragment)
+
         val bottomNavigationView =
             findViewById<BottomNavigationView>(R.id.bottom_nav)
 
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
     override fun onSupportNavigateUp(): Boolean {
 
         return navController.navigateUp() || super.onSupportNavigateUp()

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="20dp"
-    android:paddingTop="20dp"
+    android:paddingHorizontal="@dimen/_20dp"
+    android:paddingTop="@dimen/_20dp"
 
     tools:context=".presentation.FilmFragment">
 
@@ -80,7 +80,7 @@
                 tools:text="Какое то описание фильма" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/see"
+                android:id="@+id/shedule_button_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/purple_200"
