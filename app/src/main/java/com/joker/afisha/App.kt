@@ -2,7 +2,7 @@ package com.joker.afisha
 
 import android.app.Application
 import com.joker.afisha.di.AppModule
-
+import com.joker.afisha.di.NetworkModule
 
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -17,7 +17,7 @@ class App:Application() {
         startKoin {
             androidLogger()
             androidContext(this@App)
-            modules(AppModule)
+            modules(AppModule, NetworkModule)
         }
     }
 }
