@@ -17,9 +17,7 @@ import org.koin.dsl.module
 val AppModule = module {
 
 
-    viewModel {
-        AfishaViewModel(filmsRepository = get())
-    }
+    viewModelOf(::AfishaViewModel)
     viewModel {
         FilmViewModel(filmsRepository = get())
     }
