@@ -3,7 +3,9 @@ package com.joker.afisha.di
 import com.joker.afisha.data.network.FilmsDataSource
 import com.joker.afisha.data.network.FilmsDataSourceImpl
 import com.joker.afisha.data.network.repositories.FilmsRepositoryImpl
+import com.joker.afisha.data.network.repositories.NewFilmsRepositoryImpl
 import com.joker.afisha.domain.repository.FilmsRepository
+import com.joker.afisha.domain.repository.NewFilmsRepository
 import com.joker.afisha.presentation.AfishaViewModel
 import com.joker.afisha.presentation.FilmViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -27,6 +29,7 @@ val AppModule = module {
 
 
 	singleOf(::FilmsDataSourceImpl) { bind<FilmsDataSource>() }
+    singleOf(::NewFilmsRepositoryImpl) { bind<NewFilmsRepository>() }
 }
 
 
